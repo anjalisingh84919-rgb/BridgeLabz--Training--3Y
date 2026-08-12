@@ -1,0 +1,39 @@
+                                 ASSIGNMENT - 1
+ 
+
+
+
+1. Explain the difference between frontend, backend, and full-stack development with
+suitable real-world examples.
+
+Frontend Development
+Frontend development is the part of a website that users can see and interact with.
+It focuses on the design, layout, buttons, images, and menus.
+Technologies: HTML, CSS, JavaScript
+Example: The Amazon homepage, navigation bar, and product cards.
+
+Backend Development
+Backend development is the server-side part of a website. It handles data processing,
+authentication, and communication with the database.
+Technologies: Node.js, Java, Python, PHP
+Example: Checking a user's login credentials and retrieving account information.
+
+Full-Stack Development
+A Full-Stack Developer works on both the frontend and backend of a web application.
+Example: A developer who designs the login page and also creates the server that verifies the user's login details.
+
+2. Create a simple diagram showing how the client-server model works in web architecture.
+3. Describe how a browser requests and displays a web page from a web server.
+4. Identify and list the tools required to set up a web development environment. Explain the
+purpose of each.
+5. Explain what a web server is and give examples of commonly used servers.
+6. Define the roles of a frontend developer, backend developer, and database administrator
+in a project.
+7. Install VS Code and configure it for HTML, CSS, and JavaScript development. Take a
+screenshot of the setup.
+8. Explain the difference between static and dynamic websites. Provide an example of
+each.
+9. Research and list five web browsers. Explain how rendering engines differ between
+them.
+10. Draw a labeled diagram showing the basic web architecture flow — client, server,
+database, and APIs.

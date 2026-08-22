@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+
+    <style>
+        .container {
+            width: 40%;
+            margin: 20px auto;
+            border: 2px solid black;
+            border-radius: 40px;
+            overflow: hidden;
+        }
+        
+        .container ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container li {
+            background-color: white;
+            text-align: center;
+            border-top: 1px solid black;
+        }
+        
+        .container li:first-child {
+            background-color: rgb(0, 210, 230);
+            border-top: none;
+        }
+        
+        .container a {
+            display: block;
+            padding: 25px;
+            text-decoration: none;
+            color: purple;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        /* Jis link par mouse le jaoge, green ho jayega */
+        
+        .container a:hover {
+            color: black;
+            background-color: rgb(70, 240, 120);
+        }
+        
+        .container li:first-child a {
+            color: black;
+            font-size: 45px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <ul>
+            <li><a href="#">Links</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+    </div>
+
+</body>
+
+</html>

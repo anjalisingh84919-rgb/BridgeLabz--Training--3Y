@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 400px;
+            height: 500px;
+            border: 1px solid pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .card {
+            width: 200px;
+            height: 300px;
+            border: 1px solid black;
+            text-align: center;
+            /*  background-image: linear-gradient(to right bottom, red, blue);*/
+            /* background-image: repeating-linear-gradient(125deg, lightblue 0% 30%, lightpink 30% 60%, black 60% 100%);*/
+            background-image: repeating-radial-gradient(lightblue 0% 30%, lightpink 30% 60%, black 60% 100%);
+            /*transition-property: transform;
+            transition-duration: 1s;
+            transition-timing-function: ease;*/
+            transition: transform 1s ease;
+        }
+        
+        .card:hover {
+            box-shadow: -10px -20px 20px black, 10px 20px 20px lightskyblue;
+            /*transform: translateY(-30px);*/
+            /*transform: scale(1.1);*/
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Gradient, box-shadow, transition, hover effect</h1>
+    <div class="container">
+        <div class="card">
+            <h2>profile</h2>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Portfolio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: lightblue;
+        }
+        
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            padding: 80px 20px;
+        }
+        
+        .about,
+        .image {
+            width: 40%;
+            text-align: center;
+        }
+        
+        .image img {
+            width: 250px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: lightblue;
+        }
+        
+        @media (max-width: 700px) {
+            header,
+            main {
+                flex-direction: column;
+            }
+            .about,
+            .image {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <body>
+        <header>
+            <h2>Anjali Singh</h2>
+            <nav><a href="#">Home</a><a href="#">About</a><a href="#">Contact</a></nav>
+        </header>
+        <main>
+            <section class="about">
+                <h1>About Me</h1>
+                <p>Hello! I am Anjali Singh. I am a B.Tech CSE student. I am interested in Data Science, AI and Web Development. </p>
+            </section>
+            <section class="image"><img src="https://via.placeholder.com/250" alt="My Image"></section>
+        </main>
+        <footer>
+            <p>© 2026 Anjali Singh</p>
+        </footer>
+    </body>
+
+</html>

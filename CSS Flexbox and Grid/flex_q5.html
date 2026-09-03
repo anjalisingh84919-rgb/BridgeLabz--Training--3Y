@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pricing</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+        
+        .pricing {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            padding: 40px;
+        }
+        
+        .card {
+            width: 250px;
+            padding: 30px;
+            background: lightgray;
+            transition: 0.3s;
+            animation: fade 1s;
+        }
+        
+        .middle {
+            background: lightblue;
+            transform: scale(1.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @media (max-width: 750px) {
+            .pricing {
+                flex-direction: column;
+            }
+            .middle {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Our Pricing</h1>
+    <div class="pricing">
+        <div class="card">
+            <h2>Basic</h2>
+            <h3>₹499</h3>
+            <p>1 User</p>
+            <p>5 Projects</p>
+        </div>
+        <div class="card middle">
+            <h2>Pro</h2>
+            <h3>₹999</h3>
+            <p>5 Users</p>
+            <p>20 Projects</p>
+        </div>
+        <div class="card">
+            <h2>Premium</h2>
+            <h3>₹1499</h3>
+            <p>10 Users</p>
+            <p>Unlimited Projects</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            position: relative;
+        }
+        
+        h1::before {
+            position: absolute;
+            content: " ";
+            width: 6px;
+            height: 3px;
+            background-color: blue;
+            top: 50px;
+            transition: width 1s ease;
+        }
+        
+        h1::first-letter {
+            font-size: 3rem;
+            color: red;
+        }
+        
+        h1:hover::before {
+            width: 100px;
+        }
+        
+        h1:hover {
+            color: green;
+        }
+        
+        .btn {
+            margin: 50px 100px;
+            position: relative;
+        }
+        
+        .btn::after {
+            position: absolute;
+            content: "This is a tooltip";
+            width: 120px;
+            height: 25px;
+            background-color: black;
+            color: white;
+            padding: 3px;
+            border-radius: 10px;
+            bottom: 30px;
+            left: -20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .btn::before {
+            position: absolute;
+            content: " ";
+            background-color: black;
+            width: 20px;
+            height: 20px;
+            transform: rotate(45deg);
+            bottom: 27px;
+            left: 30px;
+            opacity: 0;
+        }
+        
+        .btn:hover::after {
+            opacity: 1;
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+        }
+        
+        .btn2 {
+            border: none;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            position: relative;
+        }
+        
+        .btn2::after {
+            position: absolute;
+            content: " ";
+            width: 100px;
+            height: 50px;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            z-index: -1;
+            background: linear-gradient(to right, red, yellow, green, blue, red);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>pseudo elements, tooltip, images</h2>
+    <h1>Students</h1>
+    <button class="btn">Click me</button>
+    <button class="btn2">Hover me</button>
+</body>
+
+</html>

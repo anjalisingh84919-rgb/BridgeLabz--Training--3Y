@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Cards</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px;
+            background-color: #333;
+            color: white;
+        }
+        
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding: 40px;
+        }
+        
+        .card {
+            flex: 1 1 calc(25% - 25px);
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease;
+        }
+        
+        .card:hover {
+            background-color: #ddd;
+        }
+        
+        .card h2 {
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 900px) {
+            .card {
+                flex: 1 1 calc(50% - 25px);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .cards {
+                flex-direction: column;
+            }
+            .card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Responsive Cards</h1>
+    </header>
+
+    <main>
+
+        <section class="cards">
+
+            <article class="card">
+                <h2>HTML</h2>
+                <p>
+                    HTML is used to create the structure of webpages.
+                </p>
+            </article>
+
+            <article class="card">
+                <h2>CSS</h2>
+                <p>
+                    CSS is used to style and design webpages.
+                </p>
+            </article>
+
+            <article class="card">
+                <h2>Java</h2>
+                <p>
+                    Java is a popular programming language.
+                </p>
+            </article>
+
+            <article class="card">
+                <h2>Python</h2>
+                <p>
+                    Python is widely used in AI and Data Science.
+                </p>
+            </article>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

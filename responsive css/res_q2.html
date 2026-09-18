@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Web Design Layout</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #222;
+            color: white;
+        }
+        
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        main {
+            flex: 1;
+            padding: 50px;
+        }
+        
+        .features {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+        }
+        
+        .feature-box {
+            flex: 1;
+            padding: 40px 20px;
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: scale(1.05);
+        }
+        
+        .feature-box h2 {
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+        }
+        
+        @media (max-width: 750px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .features {
+                flex-direction: column;
+            }
+            main {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            MyWebsite
+        </div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section class="features">
+
+            <article class="feature-box">
+                <h2>Design</h2>
+                <p>
+                    Beautiful and user-friendly web design.
+                </p>
+            </article>
+
+            <article class="feature-box">
+                <h2>Development</h2>
+                <p>
+                    Modern and responsive website development.
+                </p>
+            </article>
+
+            <article class="feature-box">
+                <h2>Support</h2>
+                <p>
+                    Reliable support for web applications.
+                </p>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MyWebsite</p>
+    </footer>
+
+</body>
+
+</html>

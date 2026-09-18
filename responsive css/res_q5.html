@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Filter Cards Animation</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px;
+            background-color: #222;
+            color: white;
+        }
+        
+        .profiles {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            padding: 50px;
+        }
+        
+        .profile-card {
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            /* Fade animation */
+            animation: fadeIn 1s ease;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+        
+        .profile-card:nth-child(2) img {
+            filter: sepia(100%);
+        }
+        
+        .profile-card:nth-child(3) img {
+            filter: grayscale(80%);
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .profile-card:hover img {
+            filter: none;
+        }
+        
+        .profile-card h2 {
+            margin: 15px 0 8px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 800px) {
+            .profiles {
+                flex-direction: column;
+                align-items: center;
+            }
+            .profile-card {
+                width: min(90%, 350px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Profile Cards</h1>
+    </header>
+
+    <main>
+
+        <section class="profiles">
+
+            <article class="profile-card">
+
+                <img src="https://picsum.photos/id/64/400/300" alt="Profile">
+
+                <h2>Anjali</h2>
+
+                <p>
+                    Data Science Student
+                </p>
+
+            </article>
+
+            <article class="profile-card">
+
+                <img src="https://picsum.photos/id/65/400/300" alt="Profile">
+
+                <h2>Priya</h2>
+
+                <p>
+                    Web Developer
+                </p>
+
+            </article>
+
+            <article class="profile-card">
+
+                <img src="https://picsum.photos/id/91/400/300" alt="Profile">
+
+                <h2>Riya</h2>
+
+                <p>
+                    AI Enthusiast
+                </p>
+
+            </article>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

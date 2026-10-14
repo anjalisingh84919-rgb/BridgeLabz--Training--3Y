@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Guessing Game</title>
+</head>
+
+<body>
+
+    <h2>Smart Guessing Game</h2>
+    <p id="result"></p>
+
+    <script>
+        let secretNumber = Math.floor(Math.random() * 50) + 1;
+        let userGuess = 25;
+        let message;
+
+        if (userGuess === secretNumber) {
+            message = "Correct guess!";
+        } else {
+            if (Math.abs(userGuess - secretNumber) <= 3) {
+                message = "Very close!";
+            } else if (userGuess > secretNumber) {
+                message = "Too high";
+            } else {
+                message = "Too low";
+            }
+        }
+
+        document.getElementById("result").innerHTML =
+            `Your Guess: ${userGuess}<br>
+             ${message}<br>
+             Secret Number: ${secretNumber}`;
+    </script>
+
+</body>
+
+</html>

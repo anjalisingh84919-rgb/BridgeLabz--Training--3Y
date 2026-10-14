@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Academic Performance</title>
+</head>
+
+<body>
+
+    <h2>Academic Performance Evaluator</h2>
+    <p id="result"></p>
+
+    <script>
+        let marks = [90, 85, 88, 80, 92];
+        let total = 0;
+
+        for (let mark of marks) {
+            total += mark;
+        }
+
+        let average = total / marks.length;
+        let percentage = (total / 500) * 100;
+        let message;
+
+        if (marks.some(mark => mark < 35)) {
+            message = "Detained";
+        } else if (percentage >= 85) {
+            message = "Promoted with Distinction";
+        } else if (percentage >= 50) {
+            message = "Promoted";
+        } else {
+            message = "Detained";
+        }
+
+        document.getElementById("result").innerHTML =
+            `Total: ${total}<br>
+             Average: ${average.toFixed(2)}<br>
+             Percentage: ${percentage.toFixed(2)}%<br>
+             Result: ${message}`;
+    </script>
+
+</body>
+
+</html>

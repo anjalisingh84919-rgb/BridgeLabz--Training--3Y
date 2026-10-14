@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Data Summary</title>
+</head>
+
+<body>
+
+    <h2>Multi-Type Data Summary</h2>
+    <p>Open the browser console to see the report.</p>
+
+    <script>
+        // Declare different data types
+        let name = "Anjali";
+        let age = 20;
+        let isStudent = true;
+        let subjects = ["Java", "JavaScript"];
+        let student = {
+            name: "Anjali",
+            age: 20
+        };
+        let address = null;
+        let result;
+
+        // Create the report
+        let report = [{
+            Label: "Name",
+            Value: name,
+            Type: typeof name
+        }, {
+            Label: "Age",
+            Value: age,
+            Type: typeof age
+        }, {
+            Label: "Student",
+            Value: isStudent,
+            Type: typeof isStudent
+        }, {
+            Label: "Subjects",
+            Value: subjects.join(", "),
+            Type: Array.isArray(subjects) ? "Array" : typeof subjects
+        }, {
+            Label: "Object",
+            Value: JSON.stringify(student),
+            Type: typeof student
+        }, {
+            Label: "Address",
+            Value: address,
+            Type: "null"
+        }, {
+            Label: "Result",
+            Value: result,
+            Type: typeof result
+        }];
+
+        // Display the report
+        console.table(report);
+    </script>
+
+</body>
+
+</html>

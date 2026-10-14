@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Salary Projection</title>
+</head>
+
+<body>
+
+    <h2>Employee Salary Projection</h2>
+    <p id="result"></p>
+
+    <script>
+        let salary = 30000;
+        let incrementRate = 10;
+        let report = [];
+
+        for (let year = 1; year <= 5; year++) {
+            salary += salary * incrementRate / 100;
+            salary = Math.round(salary);
+
+            report.push({
+                Year: year,
+                Salary: salary
+            });
+        }
+
+        console.table(report);
+
+        let output = "<table border='1' cellpadding='8'>";
+        output += "<tr><th>Year</th><th>Salary</th></tr>";
+
+        for (let item of report) {
+            output += `<tr><td>${item.Year}</td><td>₹${item.Salary}</td></tr>`;
+        }
+
+        output += "</table>";
+        document.getElementById("result").innerHTML = output;
+    </script>
+
+</body>
+
+</html>

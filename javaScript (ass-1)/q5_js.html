@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather Planner</title>
+</head>
+
+<body>
+
+    <h2>Weather Activity Planner</h2>
+    <p id="result"></p>
+
+    <script>
+        let temperature = 12;
+        let isRaining = false;
+        let windSpeed = 25;
+        let message;
+
+        if (isRaining) {
+            message = "Stay indoors with hot coffee.";
+        } else if (temperature > 35) {
+            message = "Go swimming.";
+        } else if (temperature < 15 && windSpeed > 20) {
+            message = "Too cold and windy — stay home.";
+        } else {
+            message = "Perfect day for a walk.";
+        }
+
+        // Display suggestion
+        document.getElementById("result").innerHTML = message;
+    </script>
+
+</body>
+
+</html>

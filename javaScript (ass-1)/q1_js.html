@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Greeting</title>
+</head>
+
+<body>
+
+    <h2>Personalized Greeting</h2>
+    <p id="result"></p>
+
+    <script>
+        // Declare user name and current hour
+        let userName = "Anjali";
+        let currentHour = new Date().getHours();
+        let message;
+
+        // Check the time
+        if (currentHour < 12) {
+            message = `Good Morning ${userName}!`;
+        } else if (currentHour <= 17) {
+            message = `Good Afternoon ${userName}!`;
+        } else {
+            message = `Good Evening ${userName}!`;
+        }
+
+        // Display the greeting
+        document.getElementById("result").innerHTML = message;
+        console.log(message);
+    </script>
+
+</body>
+
+</html>

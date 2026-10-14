@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Citizen Eligibility</title>
+</head>
+
+<body>
+
+    <h2>Citizen Eligibility Validator</h2>
+    <p id="result"></p>
+
+    <script>
+        let age = 19;
+        let isCitizen = true;
+        let message;
+
+        if (isCitizen) {
+            if (age >= 18) {
+                if (age >= 21) {
+                    message = "Eligible for all services.";
+                } else {
+                    message = "Eligible to vote only.";
+                }
+            } else {
+                message = "Not eligible yet.";
+            }
+        } else if (age >= 18) {
+            message = "Only age criteria met.";
+        } else {
+            message = "Not eligible yet.";
+        }
+
+        document.getElementById("result").innerHTML = message;
+    </script>
+
+</body>
+
+</html>

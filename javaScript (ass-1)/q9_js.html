@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Math Quiz</title>
+</head>
+
+<body>
+
+    <h2>Random Math Quiz</h2>
+    <p id="result"></p>
+
+    <script>
+        let num1 = Math.floor(Math.random() * 20) + 1;
+        let num2 = Math.floor(Math.random() * 20) + 1;
+
+        let operators = ["+", "-", "*", "/"];
+        let operator = operators[Math.floor(Math.random() * operators.length)];
+        let answer;
+
+        switch (operator) {
+            case "+":
+                answer = num1 + num2;
+                break;
+
+            case "-":
+                answer = num1 - num2;
+                break;
+
+            case "*":
+                answer = num1 * num2;
+                break;
+
+            case "/":
+                answer = Number((num1 / num2).toFixed(2));
+                break;
+        }
+
+        document.getElementById("result").innerHTML =
+            `Question: ${num1} ${operator} ${num2}<br>
+             Correct Answer: ${answer}`;
+    </script>
+
+</body>
+
+</html>

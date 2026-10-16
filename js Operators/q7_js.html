@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q7 - Customer Feedback</title>
+</head>
+
+<body>
+    <h2>Customer Feedback Processor</h2>
+
+    <textarea id="feedback" rows="4" cols="40">Great product! Fast delivery and amazing sound quality!</textarea>
+    <br><br>
+
+    <button onclick="processFeedback()">Analyze Feedback</button>
+    <p id="result"></p>
+
+    <script>
+        function processFeedback() {
+            let feedback = document.getElementById("feedback").value;
+            let lowerFeedback = feedback.toLowerCase();
+
+            // Count words
+            let words = feedback.trim().split(/\s+/);
+            let wordCount = feedback.trim() === "" ? 0 : words.length;
+
+            // Check negative words
+            if (lowerFeedback.includes("bad") ||
+                lowerFeedback.includes("poor")) {
+                document.getElementById("result").innerHTML =
+                    "Needs Improvement<br>Word Count: " + wordCount;
+            } else {
+                document.getElementById("result").innerHTML =
+                    "Positive Feedback<br>Word Count: " + wordCount;
+            }
+        }
+    </script>
+</body>
+
+</html>

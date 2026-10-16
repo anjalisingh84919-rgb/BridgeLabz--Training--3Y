@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q5 - Access System</title>
+</head>
+
+<body>
+    <h2>Boolean Logic Access System</h2>
+    <button onclick="checkSecurity()">Check Security</button>
+    <button onclick="changeValues()">Change Values</button>
+    <p id="result"></p>
+
+    <script>
+        let isDoorLocked = true;
+        let isWindowClosed = true;
+        let isAlarmOn = true;
+        let isOwnerInside = true;
+
+        function checkSecurity() {
+            // Check all security conditions
+            if (isAlarmOn && isDoorLocked &&
+                isWindowClosed && isOwnerInside) {
+                document.getElementById("result").innerHTML = "Secure";
+            } else {
+                document.getElementById("result").innerHTML = "Unsafe";
+            }
+
+            // OR and NOT operators
+            console.log("Alarm On OR Door Unlocked:",
+                isAlarmOn || !isDoorLocked);
+        }
+
+        function changeValues() {
+            isDoorLocked = false;
+            isWindowClosed = true;
+            isAlarmOn = true;
+            isOwnerInside = true;
+
+            checkSecurity();
+        }
+    </script>
+</body>
+
+</html>

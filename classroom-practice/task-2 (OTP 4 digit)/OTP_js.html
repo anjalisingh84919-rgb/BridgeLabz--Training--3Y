@@ -1,0 +1,35 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate OTP</title>
+</head>
+
+<body>
+    <h1>Generate 4 Digit OTP</h1>
+
+    <button onclick="generateOTP()">Generate OTP</button>
+
+    <p id="result"></p>
+
+    <script>
+        function generateOTP() {
+            let otp = "";
+
+            for (let i = 0; i < 4; i++) {
+                let num = Math.floor(Math.random() * 10);
+                otp += num;
+            }
+
+            document.getElementById("result").innerText = otp;
+            console.log(otp);
+        }
+    </script>
+
+</body>
+
+</html>
+```

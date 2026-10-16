@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q3 - Math Utility Dashboard</title>
+</head>
+
+<body>
+    <h2>Math Utility Dashboard</h2>
+    <button onclick="calculateMath()">Calculate</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateMath() {
+            let x = 16.75;
+
+            let roundedValue = Math.round(x);
+            let squareRoot = Math.sqrt(x);
+            let powerValue = Math.pow(x, 3);
+            let randomNumber = Math.floor(Math.random() * 41) + 10;
+
+            document.getElementById("result").innerHTML = `
+                Original Number: ${x}<br>
+                Rounded Value: ${roundedValue}<br>
+                Square Root: ${squareRoot}<br>
+                Power (x³): ${powerValue}<br>
+                Random Number (10-50): ${randomNumber}
+            `;
+        }
+    </script>
+</body>
+
+</html>

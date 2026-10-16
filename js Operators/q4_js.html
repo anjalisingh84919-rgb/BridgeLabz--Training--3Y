@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q4 - Performance Analyzer</title>
+</head>
+
+<body>
+    <h2>Array Performance Analyzer</h2>
+    <button onclick="analyzeScores()">Analyze Scores</button>
+    <p id="result"></p>
+
+    <script>
+        function analyzeScores() {
+            let scores = [];
+
+            // Generate 8 random scores between 30 and 100
+            for (let i = 0; i < 8; i++) {
+                scores.push(Math.floor(Math.random() * 71) + 30);
+            }
+
+            let highestScore = Math.max(...scores);
+            let lowestScore = Math.min(...scores);
+
+            // Calculate average
+            let total = scores.reduce((sum, score) => sum + score, 0);
+            let average = total / scores.length;
+
+            // Find passed students
+            let passed = scores.filter(score => score >= 50);
+
+            // Display scores using map()
+            let allScores = scores.map(score => score);
+
+            document.getElementById("result").innerHTML = `
+                Scores: ${allScores.join(", ")}<br>
+                Highest Score: ${highestScore}<br>
+                Lowest Score: ${lowestScore}<br>
+                Average Score: ${average.toFixed(2)}<br>
+                Students Passed: ${passed.length}<br>
+                Students Failed: ${scores.length - passed.length}
+            `;
+        }
+    </script>
+</body>
+
+</html>

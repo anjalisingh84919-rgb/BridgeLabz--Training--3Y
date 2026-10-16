@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q6 - Counter</title>
+</head>
+
+<body>
+    <h2>Event-Based Counter</h2>
+
+    <h3 id="count">Count: 0</h3>
+
+    <button onclick="increment()">Increment +</button>
+    <button onclick="decrement()">Decrement -</button>
+    <button onclick="counterStatus()">Check Nested Function</button>
+
+    <script>
+        // Global counter variable
+        let count = 0;
+
+        function increment() {
+            count++;
+            document.getElementById("count").innerHTML = "Count: " + count;
+            console.log("Incremented:", count);
+        }
+
+        function decrement() {
+            count--;
+            document.getElementById("count").innerHTML = "Count: " + count;
+            console.log("Decremented:", count);
+        }
+
+        // Nested function
+        function counterStatus() {
+            function showCount() {
+                console.log("Count inside nested function:", count);
+                alert("Current Count: " + count);
+            }
+
+            showCount();
+        }
+    </script>
+</body>
+
+</html>

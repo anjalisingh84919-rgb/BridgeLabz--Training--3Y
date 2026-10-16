@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q2 - String Manipulation</title>
+</head>
+
+<body>
+    <h2>String Manipulation Report</h2>
+    <button onclick="cleanTitle()">Clean Product Title</button>
+    <p id="result"></p>
+
+    <script>
+        function cleanTitle() {
+            let productName = " wireless headphones PRO ";
+
+            // Trim spaces and convert to lowercase
+            let cleanedTitle = productName.trim().toLowerCase();
+
+            // Capitalize the first letter of each word
+            cleanedTitle = cleanedTitle.split(" ")
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ");
+
+            // Replace Pro with Pro Edition
+            cleanedTitle = cleanedTitle.replace("Pro", "Pro Edition");
+
+            document.getElementById("result").innerHTML =
+                "Product Title: " + cleanedTitle +
+                "<br>Title Length: " + cleanedTitle.length;
+        }
+    </script>
+</body>
+
+</html>

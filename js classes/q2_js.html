@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Form Validator</title>
+    <style>
+        input {
+            display: block;
+            margin: 10px 0;
+            padding: 8px;
+        }
+        
+        .error {
+            color: red;
+        }
+        
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Student Registration</h2>
+
+    <form id="studentForm" novalidate>
+        <input type="text" id="name" placeholder="Name">
+        <span id="nameError" class="error"></span>
+
+        <input type="text" id="email" placeholder="Email">
+        <span id="emailError" class="error"></span>
+
+        <input type="text" id="phone" placeholder="Phone">
+        <span id="phoneError" class="error"></span>
+
+        <input type="password" id="password" placeholder="Password">
+        <span id="passwordError" class="error"></span>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        "use strict";
+
+        const form = document.getElementById("studentForm");
+
+        function validateField(id, regex, message) {
+            const field = document.getElementById(id);
+            const error = document.getElementById(id + "Error");
+
+            if (!regex.test(field.value.trim())) {
+                field.style.border = "2px solid red";
+                error.textContent = message;
+                return false;
+            }
+
+            field.style.border = "2px solid green";
+            error.textContent = "";
+            return true;
+        }
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const nameValid = validateField(
+                "name", /^[A-Za-z ]+$/, "Enter alphabets only"
+            );
+
+            const emailValid = validateField(
+                "email", /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                "Enter a valid email"
+            );
+
+            const phoneValid = validateField(
+                "phone", /^\d{10}$/, "Enter exactly 10 digits"
+            );
+
+            const passwordValid = validateField(
+                "password",
+                /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9\s]).+$/,
+                "Password needs uppercase, number and special character"
+            );
+
+            const result = document.getElementById("result");
+
+            if (nameValid && emailValid && phoneValid && passwordValid) {
+                result.textContent = "Registration successful!";
+                result.style.color = "green";
+                console.log("Student registration successful");
+            } else {
+                result.textContent = "Please correct the errors.";
+                result.style.color = "red";
+            }
+        });
+    </script>
+</body>
+
+</html>

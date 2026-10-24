@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie Ticket Booking</title>
+</head>
+
+<body>
+    <h2>Movie Ticket Booking</h2>
+
+    <form id="bookingForm">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="number" id="seats" placeholder="Seats" min="1" max="10" required>
+        <button type="submit">Book Ticket</button>
+    </form>
+
+    <div id="ticket"></div>
+
+    <script>
+        "use strict";
+
+        document.getElementById("bookingForm")
+            .addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const seats = Number(document.getElementById("seats").value);
+
+                const nameValid = /^[A-Za-z ]+$/.test(name);
+                const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                const seatsValid = Number.isInteger(seats) &&
+                    seats >= 1 && seats <= 10;
+
+                if (!nameValid || !emailValid || !seatsValid) {
+                    document.getElementById("ticket").textContent =
+                        "Invalid name, email or seat count";
+                    return;
+                }
+
+                const booking = {
+                    name,
+                    email,
+                    seats
+                };
+
+                document.getElementById("ticket").innerHTML = `
+                    <h3>Booking Successful!</h3>
+                    <p>Name: ${booking.name}</p>
+                    <p>Email: ${booking.email}</p>
+                    <p>Seats: ${booking.seats}</p>
+                `;
+
+                console.log("Booking:", booking);
+            });
+    </script>
+</body>
+
+</html>

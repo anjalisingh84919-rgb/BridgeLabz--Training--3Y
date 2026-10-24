@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Strict Mode</title>
+</head>
+
+<body>
+    <h2>Strict Mode Showdown</h2>
+
+    <script>
+        "use strict";
+
+        function demo(a, b) {
+            let total = 10;
+
+            console.log("First parameter:", a);
+            console.log("Second parameter:", b);
+            console.log("Total:", total);
+        }
+
+        demo(5, 10);
+
+        // Original code errors in strict mode because:
+        // 1. Duplicate parameters are not allowed.
+        // 2. Assigning to undeclared total causes ReferenceError.
+        // 3. delete total is invalid for an unqualified identifier.
+        //
+        // Correct version uses different parameters
+        // and declares total using let.
+    </script>
+</body>
+
+</html>

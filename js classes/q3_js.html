@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Library Management</title>
+</head>
+
+<body>
+    <h2>Library Management System</h2>
+
+    <div id="books"></div>
+
+    <input type="text" id="isbn" placeholder="Enter ISBN">
+    <button onclick="issueBook()">Issue Book</button>
+    <button onclick="returnBook()">Return Book</button>
+
+    <p id="message"></p>
+
+    <script>
+        "use strict";
+
+        class Book {
+            constructor(title, author, isbn) {
+                this.title = title;
+                this.author = author;
+                this.isbn = isbn;
+                this.isIssued = false;
+            }
+
+            issueBook() {
+                if (this.isIssued) return false;
+                this.isIssued = true;
+                return true;
+            }
+
+            returnBook() {
+                if (!this.isIssued) return false;
+                this.isIssued = false;
+                return true;
+            }
+        }
+
+        const library = [
+            new Book("JavaScript", "John", "101"),
+            new Book("Java", "James", "102"),
+            new Book("Python", "Guido", "103")
+        ];
+
+        function displayBooks() {
+            const available = library.filter(book => !book.isIssued);
+
+            document.getElementById("books").innerHTML =
+                "<h3>Available Books</h3>" +
+                (available.length ?
+                    available.map(book =>
+                        `<p>${book.title} - ${book.author} - ISBN: ${book.isbn}</p>`
+                    ).join("") :
+                    "<p>No books available</p>");
+        }
+
+        function issueBook() {
+            const isbn = document.getElementById("isbn").value.trim();
+            const book = library.find(book => book.isbn === isbn);
+
+            if (!book) {
+                document.getElementById("message").textContent =
+                    "Book not found";
+            } else if (book.issueBook()) {
+                document.getElementById("message").textContent =
+                    "Book issued successfully";
+            } else {
+                document.getElementById("message").textContent =
+                    "Book is already issued";
+            }
+
+            displayBooks();
+        }
+
+        function returnBook() {
+            const isbn = document.getElementById("isbn").value.trim();
+            const book = library.find(book => book.isbn === isbn);
+
+            if (book && book.returnBook()) {
+                document.getElementById("message").textContent =
+                    "Book returned successfully";
+            } else {
+                document.getElementById("message").textContent =
+                    "Book not found or not issued";
+            }
+
+            displayBooks();
+        }
+
+        displayBooks();
+    </script>
+</body>
+
+</html>

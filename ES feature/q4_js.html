@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Debugging Mystery</title>
+</head>
+
+<body>
+    <h2>Debugging Mystery</h2>
+
+    <script>
+        "use strict";
+
+        function showMessage() {
+            let greeting = "Welcome";
+            console.log(greeting);
+        }
+
+        showMessage();
+
+        // Original code gives ReferenceError because
+        // greeting was not declared.
+        // Fix: declare greeting using let.
+        // Debug: Add greeting to Watch in VS Code.
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Validation</title>
+</head>
+
+<body>
+    <h2>Login Form</h2>
+
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <br><br>
+        <input type="password" id="password" placeholder="Password" required>
+        <br><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        "use strict";
+
+        document.getElementById("loginForm")
+            .addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const username =
+                    document.getElementById("username").value;
+                const password =
+                    document.getElementById("password").value;
+
+                const message = document.getElementById("message");
+                const errors = [];
+
+                if (username.length < 5) {
+                    errors.push("Username must contain at least 5 characters.");
+                }
+
+                if (password.length < 8) {
+                    errors.push("Password must contain at least 8 characters.");
+                }
+
+                if (!/[A-Z]/.test(password)) {
+                    errors.push("Password needs an uppercase letter.");
+                }
+
+                if (!/[a-z]/.test(password)) {
+                    errors.push("Password needs a lowercase letter.");
+                }
+
+                if (!/[0-9]/.test(password)) {
+                    errors.push("Password needs a number.");
+                }
+
+                if (!/[^A-Za-z0-9]/.test(password)) {
+                    errors.push("Password needs a special character.");
+                }
+
+                if (errors.length > 0) {
+                    message.innerHTML = errors.join("<br>");
+                    message.style.color = "red";
+                } else {
+                    message.textContent = "Login validation successful!";
+                    message.style.color = "green";
+                }
+            });
+    </script>
+</body>
+
+</html>

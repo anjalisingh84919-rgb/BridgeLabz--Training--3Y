@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dynamic Data Parser</title>
+</head>
+
+<body>
+
+    <h2>Dynamic Data Parser</h2>
+    <p>Output</p>
+
+    <script>
+        "use strict";
+
+        const apiData = [
+            "25", "true", "false", "NaN", " ",
+            "100px", "3.14", null, undefined
+        ];
+
+        const valid = [];
+        const invalid = [];
+
+        for (let value of apiData) {
+            const num = Number(value);
+
+            console.log("Original:", value);
+            console.log("Number:", num);
+            console.log("Boolean:", Boolean(value));
+            console.log("String:", String(value));
+
+            if (
+                value === null ||
+                value === undefined ||
+                (typeof value === "string" &&
+                    (value.trim() === "" || Number.isNaN(num)))
+            ) {
+                invalid.push(value);
+                console.log("Invalid number");
+            } else {
+                valid.push(num);
+                console.log("Valid number");
+            }
+
+            console.log("------------------");
+        }
+
+        console.log("Valid Numbers:", valid);
+        console.log("Invalid Numbers:", invalid);
+    </script>
+
+</body>
+
+</html>

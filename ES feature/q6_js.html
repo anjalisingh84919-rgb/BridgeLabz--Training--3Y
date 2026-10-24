@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pyramid Pattern</title>
+</head>
+
+<body>
+    <h2>Pyramid Pattern Generator</h2>
+
+    <label>Enter number of rows:</label>
+    <input type="number" id="rows" value="5" min="1" max="20">
+    <button onclick="generatePyramid()">Generate</button>
+
+    <script>
+        "use strict";
+
+        function generatePyramid() {
+            let rows = Number(document.getElementById("rows").value);
+
+            if (!Number.isInteger(rows) || rows < 1 || rows > 20) {
+                rows = 5;
+            }
+
+            console.log("Pyramid:");
+
+            for (let i = 1; i <= rows; i++) {
+                let pattern = "";
+
+                for (let j = 1; j <= i; j++) {
+                    pattern += "* ";
+                }
+
+                console.log(pattern);
+            }
+        }
+
+        generatePyramid();
+
+        // var is function-scoped, while let is block-scoped.
+        // Debug: Track i and j inside the loops.
+
+        function varDemo() {
+            for (var i = 1; i <= 3; i++) {
+                console.log("var loop:", i);
+            }
+
+            console.log("After loop:", i);
+        }
+
+        varDemo();
+    </script>
+</body>
+
+</html>

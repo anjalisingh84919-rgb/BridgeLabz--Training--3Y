@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q10 - Nested Hoisting</title>
+</head>
+
+<body>
+    <h2>Nested Hoisting and Closures</h2>
+
+    <script>
+        "use strict";
+
+        function outer() {
+            console.log("Outer count:", count);
+
+            var count = 5;
+
+            function inner() {
+                console.log("Inner count:", count);
+
+                var count = 10;
+
+                console.log("Inner count after assignment:", count);
+            }
+
+            inner();
+
+            console.log("Outer count after inner:", count);
+        }
+
+        outer();
+
+        function outerArrow() {
+            let count = 5;
+
+            const innerArrow = () => {
+                console.log("Arrow reads outer count:", count);
+            };
+
+            innerArrow();
+        }
+
+        outerArrow();
+
+        // Each function has its own execution context.
+        // The inner function has its own count variable.
+        // Arrow functions use the surrounding lexical scope.
+        // Debug call stack: inner -> outer -> script.
+    </script>
+</body>
+
+</html>

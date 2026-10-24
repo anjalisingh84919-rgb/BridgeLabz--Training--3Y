@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Transaction Validator</title>
+</head>
+
+<body>
+    <h2>Transaction Validator</h2>
+
+    <script>
+        "use strict";
+
+        const transactions = [{
+                id: 1,
+                amount: 2000
+            }, {
+                id: 2,
+                amount: -500
+            }, {
+                id: 3
+            },
+            null
+        ];
+
+        const valid = [];
+        const invalid = [];
+
+        for (let i = 0; i < transactions.length; i++) {
+            try {
+                const t = transactions[i];
+
+                if (t === null) {
+                    throw new Error("Null transaction");
+                }
+
+                if (t.id === undefined || t.amount === undefined) {
+                    throw new Error("Missing id or amount");
+                }
+
+                if (t.amount < 0) {
+                    throw new Error("Negative amount");
+                }
+
+                valid.push(t);
+            } catch (error) {
+                invalid.push({
+                    transaction: transactions[i],
+                    error: error.message
+                });
+            }
+
+            // Set a breakpoint here in VS Code to debug.
+        }
+
+        console.log("Valid Transactions:", valid);
+        console.log("Invalid Transactions:", invalid);
+        console.log("Successful:", valid.length);
+        console.log("Failed:", invalid.length);
+    </script>
+</body>
+
+</html>

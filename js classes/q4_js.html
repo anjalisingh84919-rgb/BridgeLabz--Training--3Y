@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Custom Form Builder</title>
+</head>
+
+<body>
+    <h2>Custom Form Builder</h2>
+
+    <div id="formContainer"></div>
+    <pre id="output"></pre>
+
+    <script>
+        "use strict";
+
+        class FormBuilder {
+            constructor(fields) {
+                this.fields = fields;
+            }
+
+            createForm() {
+                const container = document.getElementById("formContainer");
+
+                container.innerHTML =
+                    '<form id="dynamicForm">' +
+                    this.fields.map((field, index) => `
+                        <label>${field.label}</label>
+                        <input type="${field.type}"
+                               id="field${index}"
+                               required>
+                        <br><br>
+                    `).join("") +
+                    '<button type="submit">Submit</button></form>';
+
+                document.getElementById("dynamicForm")
+                    .addEventListener("submit", event => {
+                        event.preventDefault();
+
+                        const data = this.getFormData();
+                        document.getElementById("output").textContent =
+                            JSON.stringify(data, null, 2);
+
+                        console.log(data);
+                    });
+            }
+
+            getFormData() {
+                const data = {};
+
+                this.fields.forEach((field, index) => {
+                    data[field.label] =
+                        document.getElementById("field" + index).value;
+                });
+
+                return data;
+            }
+        }
+
+        const fields = [{
+            type: "text",
+            label: "Username"
+        }, {
+            type: "email",
+            label: "Email"
+        }, {
+            type: "password",
+            label: "Password"
+        }];
+
+        const form = new FormBuilder(fields);
+        form.createForm();
+    </script>
+</body>
+
+</html>

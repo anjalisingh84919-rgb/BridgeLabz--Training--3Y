@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product Fetcher</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: lightgray;
+        }
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 30px auto;
+            width: 80%;
+            border-radius: 10px;
+        }
+        
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid gray;
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+        }
+        
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+        
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Product Store</h2>
+
+        <button onclick="getProducts()">Load Products</button>
+
+        <p id="message"></p>
+
+        <div class="products" id="products"></div>
+
+    </div>
+
+    <script>
+        // Fetch products from API
+        async function getProducts() {
+
+            let productsDiv = document.getElementById("products");
+
+            let message = document.getElementById("message");
+
+            productsDiv.innerHTML = "";
+
+            message.innerHTML = "Loading products...";
+
+            try {
+
+                // Fetch API data
+                let response = await fetch(
+                    "https://fakestoreapi.com/products"
+                );
+
+                if (!response.ok) {
+                    throw new Error("API Error");
+                }
+
+                // Convert data into JSON
+                let products = await response.json();
+
+                message.innerHTML = "";
+
+                // Display products
+                products.forEach((product) => {
+
+                    console.log("Product:", product.title);
+                    console.log("Price: $" + product.price);
+                    console.log("Image:", product.image);
+
+                    // Create card
+                    let card = document.createElement("div");
+
+                    card.className = "card";
+
+                    // Create image
+                    let image = document.createElement("img");
+
+                    image.src = product.image;
+
+                    // Create title
+                    let title = document.createElement("h3");
+
+                    title.innerHTML = product.title;
+
+                    // Create price
+                    let price = document.createElement("p");
+
+                    price.innerHTML = "Price: $" + product.price;
+
+                    // Add elements to card
+                    card.appendChild(image);
+
+                    card.appendChild(title);
+
+                    card.appendChild(price);
+
+                    // Add card to page
+                    productsDiv.appendChild(card);
+
+                });
+
+            } catch (error) {
+
+                message.innerHTML =
+                    "Failed to load products. Please try again.";
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Order Processing</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: lightyellow;
+        }
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 350px;
+            border-radius: 10px;
+        }
+        
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Order Processing</h2>
+
+        <button onclick="startOrder()">Submit Order</button>
+
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+        // Submit order using Promise
+        function submitOrder() {
+
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    if (Math.random() > 0.5) {
+
+                        resolve("Order Successful");
+
+                    } else {
+
+                        reject("Order Failed");
+
+                    }
+
+                }, 1000);
+
+            });
+        }
+
+        // Retry up to 3 times
+        async function processOrder() {
+
+            let result = document.getElementById("result");
+
+            for (let i = 1; i <= 3; i++) {
+
+                try {
+
+                    await submitOrder();
+
+                    result.innerHTML +=
+                        "Attempt " + i + ": Success<br>";
+
+                    return;
+
+                } catch (error) {
+
+                    result.innerHTML +=
+                        "Attempt " + i + ": Failed<br>";
+
+                }
+
+            }
+
+            throw new Error("Order could not be processed");
+
+        }
+
+        // Handle final error
+        async function startOrder() {
+
+            let result = document.getElementById("result");
+
+            result.innerHTML = "Order Processing...<br>";
+
+            try {
+
+                await processOrder();
+
+            } catch (error) {
+
+                result.innerHTML += error.message;
+
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

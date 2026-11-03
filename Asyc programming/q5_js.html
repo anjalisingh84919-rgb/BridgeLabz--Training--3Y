@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Callback Hell</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: lightyellow;
+        }
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 400px;
+            border-radius: 10px;
+        }
+        
+        button {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Build Pipeline</h2>
+
+        <button onclick="runCallbacks()">Callback</button>
+
+        <button onclick="runAsync()">Async/Await</button>
+
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+        let result = document.getElementById("result");
+
+        // Callback functions
+        function design(callback) {
+
+            setTimeout(() => {
+                result.innerHTML += "Design completed<br>";
+                callback();
+            }, 1000);
+
+        }
+
+        function build(callback) {
+
+            setTimeout(() => {
+                result.innerHTML += "Build completed<br>";
+                callback();
+            }, 1000);
+
+        }
+
+        function test(callback) {
+
+            setTimeout(() => {
+                result.innerHTML += "Test completed<br>";
+                callback();
+            }, 1000);
+
+        }
+
+        function deploy(callback) {
+
+            setTimeout(() => {
+                result.innerHTML += "Deploy completed<br>";
+                callback();
+            }, 1000);
+
+        }
+
+        function celebrate() {
+
+            setTimeout(() => {
+                result.innerHTML += "Celebrate completed<br>";
+            }, 1000);
+
+        }
+
+        // Nested callbacks
+        function runCallbacks() {
+
+            result.innerHTML = "Callback Method:<br>";
+
+            design(() => {
+
+                build(() => {
+
+                    test(() => {
+
+                        deploy(() => {
+
+                            celebrate();
+
+                        });
+
+                    });
+
+                });
+
+            });
+
+        }
+
+        // Promise function
+        function createStage(name) {
+
+            return new Promise((resolve) => {
+
+                setTimeout(() => {
+
+                    result.innerHTML += name + " completed<br>";
+
+                    resolve();
+
+                }, 1000);
+
+            });
+
+        }
+
+        // Async/Await method
+        async function runAsync() {
+
+            result.innerHTML = "Async/Await Method:<br>";
+
+            await createStage("Design");
+
+            await createStage("Build");
+
+            await createStage("Test");
+
+            await createStage("Deploy");
+
+            await createStage("Celebrate");
+
+            result.innerHTML += "Pipeline completed!";
+
+        }
+
+        // Async/await makes code easy to read.
+        // It avoids nested callback functions.
+    </script>
+
+</body>
+
+</html>

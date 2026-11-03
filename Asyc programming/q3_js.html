@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bug Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: lightyellow;
+        }
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 350px;
+            border-radius: 10px;
+        }
+        
+        button {
+            padding: 10px;
+            background: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Bug Tracker</h2>
+
+        <button onclick="fetchBugs()">Fetch Bugs</button>
+
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+        // Promise-based function
+        function getBugs() {
+
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    let failure = Math.random() < 0.3;
+
+                    if (failure) {
+
+                        reject("API failed");
+
+                    } else {
+
+                        resolve([
+                            "UI glitch",
+                            "API timeout",
+                            "Login failure"
+                        ]);
+
+                    }
+
+                }, 1000);
+
+            });
+        }
+
+        // Fetch bugs
+        function fetchBugs() {
+
+            let result = document.getElementById("result");
+
+            result.innerHTML = "Loading bugs...";
+
+            getBugs()
+                .then((bugs) => {
+
+                    console.table(bugs);
+
+                    result.innerHTML = "<h3>Bug List</h3>";
+
+                    bugs.forEach((bug, index) => {
+
+                        result.innerHTML +=
+                            (index + 1) + ". " + bug + "<br>";
+
+                    });
+
+                })
+                .catch((error) => {
+
+                    result.innerHTML = error;
+
+                });
+        }
+    </script>
+
+</body>
+
+</html>

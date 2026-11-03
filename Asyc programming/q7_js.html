@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lazy Loader</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: lightgreen;
+        }
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 350px;
+            border-radius: 10px;
+        }
+        
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Dashboard Loader</h2>
+
+        <button onclick="loadDashboard()">Load Dashboard</button>
+
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+        // Load Profile
+        function loadProfile() {
+
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    if (Math.random() > 0.3) {
+                        resolve("Profile Loaded");
+                    } else {
+                        reject("Profile Failed");
+                    }
+
+                }, 2000);
+
+            });
+        }
+
+        // Load Posts
+        function loadPosts() {
+
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    if (Math.random() > 0.3) {
+                        resolve("Posts Loaded");
+                    } else {
+                        reject("Posts Failed");
+                    }
+
+                }, 1500);
+
+            });
+        }
+
+        // Load Messages
+        function loadMessages() {
+
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    if (Math.random() > 0.3) {
+                        resolve("Messages Loaded");
+                    } else {
+                        reject("Messages Failed");
+                    }
+
+                }, 1000);
+
+            });
+        }
+
+        // Main function
+        async function loadDashboard() {
+
+            let result = document.getElementById("result");
+
+            result.innerHTML = "Loading Dashboard...<br>";
+
+            let startTime = Date.now();
+
+            // Run all promises together
+            let responses = await Promise.allSettled([
+
+                loadProfile(),
+
+                loadPosts(),
+
+                loadMessages()
+
+            ]);
+
+            // Check success and failure
+            responses.forEach((response) => {
+
+                if (response.status === "fulfilled") {
+
+                    result.innerHTML +=
+                        "Success: " + response.value + "<br>";
+
+                } else {
+
+                    result.innerHTML +=
+                        "Failed: " + response.reason + "<br>";
+
+                }
+
+            });
+
+            let endTime = Date.now();
+
+            result.innerHTML +=
+                "Total Time: " + (endTime - startTime) + " ms";
+
+        }
+    </script>
+
+</body>
+
+</html>

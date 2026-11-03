@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Async Coffee Maker</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: lightyellow;
+        }
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 350px;
+            border-radius: 10px;
+        }
+        
+        button {
+            padding: 10px;
+            background: brown;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h2>Async Coffee Maker</h2>
+
+        <button onclick="makeCoffee()">Make Coffee</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // Step 1: Boil Water
+        function boilWater() {
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+                    if (Math.random() > 0.2) {
+                        resolve("Water boiled successfully");
+                    } else {
+                        reject("Water boiling failed");
+                    }
+                }, 1000);
+
+            });
+        }
+
+        // Step 2: Brew Coffee
+        function brewCoffee() {
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+                    if (Math.random() > 0.2) {
+                        resolve("Coffee brewed successfully");
+                    } else {
+                        reject("Coffee brewing failed");
+                    }
+                }, 1000);
+
+            });
+        }
+
+        // Step 3: Pour Coffee
+        function pourCoffee() {
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+                    if (Math.random() > 0.2) {
+                        resolve("Coffee poured into cup");
+                    } else {
+                        reject("Pouring coffee failed");
+                    }
+                }, 1000);
+
+            });
+        }
+
+        // Main function
+        function makeCoffee() {
+
+            let result = document.getElementById("result");
+
+            result.innerHTML = "Coffee preparation started...<br>";
+
+            boilWater()
+                .then((message) => {
+
+                    result.innerHTML += message + "<br>";
+
+                    return brewCoffee();
+
+                })
+                .then((message) => {
+
+                    result.innerHTML += message + "<br>";
+
+                    return pourCoffee();
+
+                })
+                .then((message) => {
+
+                    result.innerHTML += message + "<br>";
+                    result.innerHTML += "Coffee ready for the team!";
+
+                })
+                .catch((error) => {
+
+                    result.innerHTML += "Error: " + error;
+
+                });
+        }
+    </script>
+
+</body>
+
+</html>

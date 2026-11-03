@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Server Response</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: lightblue;
+        }
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 350px;
+            border-radius: 10px;
+        }
+        
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Server Deployment</h2>
+
+        <button onclick="startDeployment()">Start</button>
+
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+        // Server A
+        function serverA() {
+
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    if (Math.random() > 0.2) {
+                        resolve("Server A completed");
+                    } else {
+                        reject("Server A failed");
+                    }
+
+                }, 2000);
+
+            });
+        }
+
+        // Server B
+        function serverB() {
+
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    if (Math.random() > 0.2) {
+                        resolve("Server B completed");
+                    } else {
+                        reject("Server B failed");
+                    }
+
+                }, 3000);
+
+            });
+        }
+
+        function startDeployment() {
+
+            let result = document.getElementById("result");
+
+            result.innerHTML = "Deployment started...<br>";
+
+            // Create promises only once
+            let promiseA = serverA();
+            let promiseB = serverB();
+
+            // Promise.all()
+            Promise.all([promiseA, promiseB])
+                .then(() => {
+
+                    result.innerHTML +=
+                        "Deployment completed for all servers<br>";
+
+                })
+                .catch((error) => {
+
+                    result.innerHTML += error + "<br>";
+
+                });
+
+            // Promise.race()
+            Promise.race([promiseA, promiseB])
+                .then((response) => {
+
+                    result.innerHTML +=
+                        "Fastest response: " + response;
+
+                })
+                .catch((error) => {
+
+                    result.innerHTML += "Error: " + error;
+
+                });
+        }
+    </script>
+
+</body>
+
+</html>

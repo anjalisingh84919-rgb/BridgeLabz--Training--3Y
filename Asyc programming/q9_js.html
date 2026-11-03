@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Event Loop Debugger</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: lightblue;
+        }
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 350px;
+            border-radius: 10px;
+        }
+        
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Event Loop Debugger</h2>
+
+        <button onclick="runProgram()">Run Program</button>
+
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+        function runProgram() {
+
+            let result = document.getElementById("result");
+
+            result.innerHTML = "";
+
+            function show(message) {
+
+                result.innerHTML += message + "<br>";
+
+            }
+
+            // Predicted Output:
+            // Script start
+            // Script end
+            // Promise callback
+            // Timeout callback
+
+            show("Script start");
+
+            // Macrotask
+            setTimeout(() => {
+
+                show("Timeout callback");
+
+            }, 0);
+
+            // Microtask
+            Promise.resolve().then(() => {
+
+                show("Promise callback");
+
+            });
+
+            show("Script end");
+
+            // Explanation:
+            // First synchronous code runs.
+            // Promise is a microtask.
+            // setTimeout is a macrotask.
+            // Microtask runs before macrotask.
+
+        }
+    </script>
+
+</body>
+
+</html>

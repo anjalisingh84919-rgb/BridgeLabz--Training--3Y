@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Micro vs Macro</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: lightblue;
+        }
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 350px;
+            border-radius: 10px;
+        }
+        
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Event Loop</h2>
+
+        <button onclick="runProgram()">Run Program</button>
+
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+        function runProgram() {
+
+            let result = document.getElementById("result");
+
+            result.innerHTML = "";
+
+            // Function to display output
+            function show(message) {
+                result.innerHTML += message + "<br>";
+            }
+
+            // Synchronous code
+            show("Start");
+
+            // Macrotask
+            setTimeout(() => {
+                show("Timeout callback");
+            }, 0);
+
+            // Microtask
+            Promise.resolve().then(() => {
+                show("Promise callback");
+            });
+
+            show("Middle");
+
+            show("End");
+
+            // Explanation:
+            // Synchronous code executes first.
+            // Promise is a microtask.
+            // setTimeout is a macrotask.
+            // Microtasks execute before macrotasks.
+        }
+    </script>
+
+</body>
+
+</html>

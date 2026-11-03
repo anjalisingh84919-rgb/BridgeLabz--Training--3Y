@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Delivery Pipeline</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: lightyellow;
+        }
+        
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            width: 400px;
+            border-radius: 10px;
+        }
+        
+        button {
+            padding: 10px;
+            background: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h2>Food Delivery System</h2>
+
+        <button onclick="runPipeline()">Start Delivery</button>
+
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+        // Function for each delivery step
+        function deliveryStep(message) {
+
+            return new Promise((resolve, reject) => {
+
+                // Random delay between 1 and 2 seconds
+                let delay = Math.floor(Math.random() * 1000) + 1000;
+
+                setTimeout(() => {
+
+                    // Random success or failure
+                    if (Math.random() > 0.2) {
+
+                        resolve(message);
+
+                    } else {
+
+                        reject("Step failed");
+
+                    }
+
+                }, delay);
+
+            });
+        }
+
+        // Main async function
+        async function runPipeline() {
+
+            let result = document.getElementById("result");
+
+            result.innerHTML = "Start Pipeline<br>";
+
+            try {
+
+                // Step 1
+                let step1 = await deliveryStep(
+                    "Step 1: Order taken"
+                );
+
+                result.innerHTML += step1 + "<br>";
+
+                // Step 2
+                let step2 = await deliveryStep(
+                    "Step 2: Food prepared"
+                );
+
+                result.innerHTML += step2 + "<br>";
+
+                // Step 3
+                let step3 = await deliveryStep(
+                    "Step 3: Package ready"
+                );
+
+                result.innerHTML += step3 + "<br>";
+
+                // Step 4
+                let step4 = await deliveryStep(
+                    "Step 4: Out for delivery"
+                );
+
+                result.innerHTML += step4 + "<br>";
+
+                // Step 5
+                let step5 = await deliveryStep(
+                    "Delivery completed!"
+                );
+
+                result.innerHTML += step5;
+
+            } catch (error) {
+
+                result.innerHTML += "<br>Pipeline failed!";
+
+            }
+
+        }
+
+        // async defines asynchronous function.
+        // await waits for Promise.
+        // try handles successful execution.
+        // catch handles errors.
+    </script>
+
+</body>
+
+</html>

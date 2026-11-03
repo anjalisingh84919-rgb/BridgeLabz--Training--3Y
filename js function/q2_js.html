@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Apply Operation</title>
+
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        
+        .container {
+            background: white;
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        button {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h2>Apply Operation</h2>
+        <button onclick="runQ2()">Run Code</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        // Q2: Apply Operation
+
+        function applyOperation(numbers, operation) {
+
+            return numbers.map(operation);
+
+        }
+
+        function runQ2() {
+
+            let numbers = [1, 2, 3, 4];
+
+            // Double each number
+            let doubleNumbers = applyOperation(numbers, function(num) {
+                return num * 2;
+            });
+
+            // Square each number
+            let squareNumbers = applyOperation(numbers, function(num) {
+                return num * num;
+            });
+
+            document.getElementById("output").innerHTML =
+                "Original: " + numbers + "<br>" +
+                "Double: " + doubleNumbers + "<br>" +
+                "Square: " + squareNumbers;
+        }
+    </script>
+
+</body>
+
+</html>

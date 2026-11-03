@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Q6 Prototype Chain</title>
+
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        
+        .container {
+            background: white;
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        button {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Prototype Chain</h2>
+        <button onclick="runQ6()">Run Code</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        // Q6: Person Constructor
+
+        function Person(name) {
+
+            this.name = name;
+        }
+
+        Person.prototype.showPerson = function() {
+
+            return "Name: " + this.name;
+        };
+
+        // Faculty Constructor
+        function Faculty(name, subject) {
+
+            Person.call(this, name);
+
+            this.subject = subject;
+        }
+
+        Faculty.prototype = Object.create(Person.prototype);
+
+        Faculty.prototype.constructor = Faculty;
+
+        Faculty.prototype.showFaculty = function() {
+
+            return "Subject: " + this.subject;
+        };
+
+        // Professor Constructor
+        function Professor(name, subject, experience) {
+
+            Faculty.call(this, name, subject);
+
+            this.experience = experience;
+        }
+
+        Professor.prototype = Object.create(Faculty.prototype);
+
+        Professor.prototype.constructor = Professor;
+
+        Professor.prototype.showProfessor = function() {
+
+            return "Experience: " + this.experience + " years";
+        };
+
+        // Create Professor Object
+        let professor1 = new Professor("Rahul", "Java", 10);
+
+        function runQ6() {
+
+            document.getElementById("output").innerHTML =
+                professor1.showPerson() + "<br>" +
+                professor1.showFaculty() + "<br>" +
+                professor1.showProfessor();
+        }
+    </script>
+
+
+</body>
+
+</html>

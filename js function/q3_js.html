@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Arrow Function</title>
+
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        
+        .container {
+            background: white;
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        button {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h2>Arrow Function</h2>
+        <button onclick="runQ3()">Run Code</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        // Q3: Arrow Function
+
+        let user = {
+
+            name: "Anjali",
+
+            showName: () => {
+                return this.name;
+            }
+        };
+
+        // Normal Function
+        let normalUser = {
+
+            name: "Anjali",
+
+            showName: function() {
+                return this.name;
+            }
+        };
+
+        function runQ3() {
+
+            document.getElementById("output").innerHTML =
+                "Arrow Function: " + user.showName() + "<br>" +
+                "Normal Function: " + normalUser.showName();
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Q5 Inheritance</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        
+        .container {
+            background: white;
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        button {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h2>Person and Student</h2>
+        <button onclick="runQ5()">Run Code</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        // Q5: Person Constructor
+
+        function Person(name) {
+
+            this.name = name;
+        }
+
+        // Student Constructor
+        function Student(name, branch) {
+
+            Person.call(this, name);
+
+            this.branch = branch;
+        }
+
+        // Prototype Inheritance
+        Student.prototype = Object.create(Person.prototype);
+
+        Student.prototype.constructor = Student;
+
+        // Method
+        Student.prototype.showDetails = function() {
+
+            return "Name: " + this.name +
+                "<br>Branch: " + this.branch;
+        };
+
+        // Create Student Object
+        let student1 = new Student("Anjali", "CSE");
+
+        function runQ5() {
+
+            document.getElementById("output").innerHTML =
+                student1.showDetails();
+        }
+    </script>
+
+
+</body>
+
+</html>

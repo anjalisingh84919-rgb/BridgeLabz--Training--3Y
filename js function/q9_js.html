@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Q9 ES6 Classes</title>
+
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        
+        .container {
+            background: white;
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        button {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>ES6 Class Inheritance</h2>
+        <button onclick="runQ9()">Run Code</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        // Q9: Person Class
+
+        class Person {
+
+            constructor(name) {
+
+                this.name = name;
+            }
+
+            showName() {
+
+                return "Name: " + this.name;
+            }
+        }
+
+        // Student Class
+        class Student extends Person {
+
+            constructor(name, branch) {
+
+                super(name);
+
+                this.branch = branch;
+            }
+
+            showDetails() {
+
+                return this.showName() +
+                    "<br>Branch: " + this.branch;
+            }
+        }
+
+        // Create Object
+        let student1 = new Student("Anjali", "CSE");
+
+        function runQ9() {
+
+            document.getElementById("output").innerHTML =
+                student1.showDetails();
+        }
+    </script>
+
+
+</body>
+
+</html>

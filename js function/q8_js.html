@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Q8 Custom myMap</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        
+        .container {
+            background: white;
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        button {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h2>Custom myMap()</h2>
+        <button onclick="runQ8()">Run Code</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        // Q8: Custom myMap Method
+
+        Array.prototype.myMap = function(callback) {
+
+            let result = [];
+
+            for (let i = 0; i < this.length; i++) {
+
+                result.push(callback(this[i], i, this));
+            }
+
+            return result;
+        };
+
+        function runQ8() {
+
+            let numbers = [1, 2, 3];
+
+            let result = numbers.myMap(function(num) {
+
+                return num * 2;
+            });
+
+            document.getElementById("output").innerHTML =
+                "Original Array: " + numbers + "<br>" +
+                "After myMap: " + result;
+        }
+    </script>
+
+
+</body>
+
+</html>

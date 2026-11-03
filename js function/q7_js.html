@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Q7 Closure</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        
+        .container {
+            background: white;
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        button {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Closure and Multiplier</h2>
+        <button onclick="runQ7()">Run Code</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        // Q7: Closure
+
+        function makeMultiplier(multiplier) {
+
+            return function(number) {
+
+                return number * multiplier;
+            };
+        }
+
+        // Create Functions
+        const triple = makeMultiplier(3);
+
+        const double = makeMultiplier(2);
+
+        function runQ7() {
+
+            document.getElementById("output").innerHTML =
+                "Triple of 5: " + triple(5) + "<br>" +
+                "Double of 5: " + double(5);
+        }
+    </script>
+
+</body>
+
+</html>

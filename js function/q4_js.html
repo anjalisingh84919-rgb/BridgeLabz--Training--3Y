@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q4 Constructor Function</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        
+        .container {
+            background: white;
+            width: 350px;
+            margin: 100px auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        button {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>Car Details</h2>
+        <button onclick="runQ4()">Run Code</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        // Q4: Constructor Function
+
+        function Car(brand, model) {
+
+            this.brand = brand;
+            this.model = model;
+        }
+
+        // Prototype Method
+        Car.prototype.getDetails = function() {
+
+            return this.brand + " " + this.model;
+        };
+
+        // Create two objects
+        let car1 = new Car("Toyota", "Fortuner");
+
+        let car2 = new Car("Hyundai", "Creta");
+
+        function runQ4() {
+
+            document.getElementById("output").innerHTML =
+                "Car 1: " + car1.getDetails() + "<br>" +
+                "Car 2: " + car2.getDetails();
+        }
+    </script>
+
+
+</body>
+
+</html>

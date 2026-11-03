@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product List Manager</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+        
+        input,
+        button {
+            padding: 10px;
+            margin: 5px;
+        }
+        
+        li {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Product List Manager</h2>
+
+    <input type="text" id="productInput" placeholder="Enter product">
+    <button onclick="addProduct()">Add Product</button>
+
+    <ul id="productList"></ul>
+
+    <script>
+        let productList = document.getElementById("productList");
+        let productInput = document.getElementById("productInput");
+
+        function addProduct() {
+            let productName = productInput.value.trim();
+
+            if (productName === "") {
+                alert("Please enter product name");
+                return;
+            }
+
+            let li = document.createElement("li");
+            li.innerHTML = `
+                <span>${productName}</span>
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            `;
+
+            productList.appendChild(li);
+            productInput.value = "";
+        }
+
+        productList.addEventListener("click", function(event) {
+
+            let li = event.target.parentElement;
+
+            if (event.target.classList.contains("delete")) {
+                li.remove();
+            }
+
+            if (event.target.classList.contains("edit")) {
+                let span = li.querySelector("span");
+                let input = document.createElement("input");
+
+                input.value = span.innerText;
+                li.replaceChild(input, span);
+
+                input.focus();
+
+                function saveEdit() {
+                    let newSpan = document.createElement("span");
+                    newSpan.innerText = input.value;
+                    li.replaceChild(newSpan, input);
+                }
+
+                input.addEventListener("blur", saveEdit);
+                input.addEventListener("keydown", function(e) {
+                    if (e.key === "Enter") {
+                        input.blur();
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

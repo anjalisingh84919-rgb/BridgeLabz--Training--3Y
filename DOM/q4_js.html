@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Theme Switcher</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 50px;
+        }
+        
+        body.light {
+            background-color: white;
+            color: black;
+        }
+        
+        body.dark {
+            background-color: black;
+            color: white;
+        }
+        
+        body.blue {
+            background-color: lightblue;
+            color: darkblue;
+        }
+        
+        button {
+            padding: 12px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body class="light" data-theme="light">
+
+    <h2>Theme Switcher</h2>
+
+    <button onclick="changeTheme('light')">Light</button>
+    <button onclick="changeTheme('dark')">Dark</button>
+    <button onclick="changeTheme('blue')">Blue</button>
+
+    <p>Click any button to change theme.</p>
+
+    <script>
+        function changeTheme(theme) {
+            document.body.setAttribute("class", theme);
+            document.body.setAttribute("data-theme", theme);
+        }
+    </script>
+
+</body>
+
+</html>

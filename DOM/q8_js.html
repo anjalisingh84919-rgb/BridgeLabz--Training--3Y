@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Custom Dropdown</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+        
+        button {
+            padding: 12px;
+            cursor: pointer;
+        }
+        
+        #options {
+            display: none;
+            width: 150px;
+            border: 1px solid black;
+        }
+        
+        .option {
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        .option:hover {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Custom Dropdown</h2>
+
+    <div id="dropdown">
+        <button id="dropdownButton">Select Option</button>
+
+        <div id="options">
+            <div class="option">HTML</div>
+            <div class="option">CSS</div>
+            <div class="option">JavaScript</div>
+            <div class="option">Java</div>
+        </div>
+    </div>
+
+    <script>
+        let dropdown = document.getElementById("dropdown");
+        let button = document.getElementById("dropdownButton");
+        let options = document.getElementById("options");
+
+        button.addEventListener("click", function(event) {
+            event.stopPropagation();
+
+            if (options.style.display === "block") {
+                options.style.display = "none";
+            } else {
+                options.style.display = "block";
+            }
+        });
+
+        options.addEventListener("click", function(event) {
+            if (event.target.classList.contains("option")) {
+                button.innerText = event.target.innerText;
+                options.style.display = "none";
+            }
+        });
+
+        // Capturing phase: closes dropdown on outside click
+        document.addEventListener("click", function(event) {
+            if (!dropdown.contains(event.target)) {
+                options.style.display = "none";
+            }
+        }, true);
+    </script>
+
+</body>
+
+</html>

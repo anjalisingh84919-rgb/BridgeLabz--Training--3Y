@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Character Counter</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+        
+        textarea {
+            width: 300px;
+            height: 120px;
+            padding: 10px;
+        }
+        
+        #counter {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Live Character Counter</h2>
+
+    <textarea id="message" maxlength="100" placeholder="Enter your message"></textarea>
+
+    <p id="counter">100 characters remaining</p>
+
+    <button onclick="resetText()">Reset</button>
+
+    <script>
+        let message = document.getElementById("message");
+        let counter = document.getElementById("counter");
+
+        message.addEventListener("keydown", function(event) {
+            if (message.value.length >= 100 &&
+                event.key.length === 1 &&
+                !event.ctrlKey && !event.metaKey) {
+                event.preventDefault();
+            }
+        });
+
+        message.addEventListener("input", function() {
+            let remaining = 100 - message.value.length;
+
+            counter.innerText = remaining + " characters remaining";
+
+            if (remaining <= 0) {
+                counter.style.color = "red";
+            } else if (remaining <= 20) {
+                counter.style.color = "orange";
+            } else {
+                counter.style.color = "green";
+            }
+        });
+
+        function resetText() {
+            message.value = "";
+            counter.innerText = "100 characters remaining";
+            counter.style.color = "green";
+        }
+    </script>
+
+</body>
+
+</html>
